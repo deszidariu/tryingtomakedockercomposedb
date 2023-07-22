@@ -1,0 +1,27 @@
+
+services:
+  priceaggregator:
+    container_name: priceaggregator
+    image: priceaggregator
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      ConnectionStrings__PriceAggregator: "Host=db;username=dariu;password=dariu;database=PriceAggregator"
+    depends_on:
+      - db
+  
+  db:
+    container_name: db
+    image: postgres:12
+    ports:
+      - "5789:5789"
+    environment:
+      POSTGRES_PASSWORD: dariu
+      POSTGRES_USER: dariu
+      POSTGRES_DB: PriceAggregator
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}

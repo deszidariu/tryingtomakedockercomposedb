@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PriceAggregator.Api.props" />
+</Project>
